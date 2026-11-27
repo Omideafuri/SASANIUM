@@ -1,0 +1,132 @@
+@import "tailwindcss";
+
+:root {
+  /* Journey palette (unchanged) */
+  --color-void: #0c0a08;
+  --color-obsidian: #15110d;
+  --color-sand: #efe8dc;
+  --color-stone: #b7ab98;
+  --color-amber: #d4a359;
+  --color-amber-soft: rgba(212, 163, 89, 0.25);
+  --color-turquoise: #2a8c82;
+
+  /* Cream Projects Sheet palette (used ONLY inside the sheet) */
+  --sheet-cream: #F3E9DA;
+  --sheet-sand: #E5D7C3;
+  --sheet-ink: #14110D;
+  --sheet-accent: #B86B1F;
+  --sheet-accent-text: #9A5514;
+
+  --font-display: "Absans", "Cormorant Garamond", Georgia, serif;
+  --font-brand: "Neutral Face", "Plus Jakarta Sans", system-ui, sans-serif;
+  --font-sans: "Vercetti", "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+  --font-sheet: "Archivo", system-ui, sans-serif;
+}
+
+@font-face {
+  font-family: "Absans";
+  src:
+    url("/fonts/Absans-Regular.woff2") format("woff2"),
+    url("/fonts/Absans-Regular.woff") format("woff");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Neutral Face";
+  src: url("/fonts/NeutralFace-Bold.otf") format("opentype");
+  font-weight: 700 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Vercetti";
+  src:
+    url("/fonts/Vercetti-Regular.woff2") format("woff2"),
+    url("/fonts/Vercetti-Regular.woff") format("woff");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@layer base {
+  html {
+    background-color: var(--color-void);
+    color: var(--color-sand);
+    font-family: var(--font-sans);
+    font-weight: 800;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  html::-webkit-scrollbar {
+    display: none;
+  }
+
+  body {
+    margin: 0;
+    overflow-x: hidden;
+    background-color: var(--color-void);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-amber);
+    outline-offset: 4px;
+    border-radius: 2px;
+  }
+}
+
+.font-display {
+  font-family: var(--font-display);
+  font-weight: 800;
+}
+
+.font-brand {
+  font-family: var(--font-brand);
+  font-weight: 800;
+}
+
+.font-sheet {
+  font-family: var(--font-sheet);
+}
+
+.sheet-headline {
+  font-family: var(--font-sheet);
+  font-weight: 850;
+  font-variation-settings: "wdth" 118;
+}
+
+.sheet-condensed {
+  font-family: var(--font-sheet);
+  font-weight: 800;
+  font-variation-settings: "wdth" 82;
+}
+
+.sheet-overlap {
+  margin-top: -100vh;
+  margin-top: -100svh;
+  min-height: 100vh;
+  min-height: 100dvh;
+  overflow-x: clip;
+}
+
+/* Subtle film grain animation */
+@keyframes grainShift {
+  0%, 100% { transform: translate(0, 0); }
+  20% { transform: translate(-2%, 1.5%); }
+  40% { transform: translate(1.5%, -2%); }
+  60% { transform: translate(-1.5%, -1%); }
+  80% { transform: translate(2%, 1.5%); }
+}
+
+.film-grain {
+  animation: grainShift 0.9s steps(2) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .film-grain {
+    animation: none;
+  }
+}
